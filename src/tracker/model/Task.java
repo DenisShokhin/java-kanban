@@ -40,10 +40,16 @@ public class Task {
         this.status = status;
     }
 
+    public Task copy() {
+        Task copy = new Task(this.name, this.description, this.status);
+        copy.setId(this.id);
+        return copy;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || this.getClass() != o.getClass()) return false;
+        if (!(o instanceof Task)) return false;
         Task task = (Task) o;
         return id == task.id;
     }
